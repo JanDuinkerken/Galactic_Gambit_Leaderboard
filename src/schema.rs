@@ -5,6 +5,6 @@ diesel::table! {
         id -> Integer,
         level_id -> Integer,
         username -> Text,
-        seconds -> Integer,
+        seconds -> Float,
     }
 }
