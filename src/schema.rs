@@ -2,9 +2,9 @@
 
 diesel::table! {
     entries (id) {
-        id -> Integer,
-        level_id -> Integer,
-        username -> Text,
-        seconds -> Float,
+        id -> Int4,
+        level_id -> Int4,
+        username -> Varchar,
+        seconds -> Float8,
     }
 }
