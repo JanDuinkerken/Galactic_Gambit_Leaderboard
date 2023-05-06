@@ -18,5 +18,5 @@ DATABASE_URL=postgres://username:password@localhost:port/database > .env
 ## How to run
 To run the server you can run the following command from the root of the project:
 ```
-cargo run
+docker compose up
 ```
