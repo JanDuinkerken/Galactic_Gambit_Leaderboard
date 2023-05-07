@@ -17,7 +17,7 @@ pub fn establish_connection() -> PgConnection {
 
 pub fn create_entry(
     conn: &mut PgConnection,
-    level_id: &i32,
+    level_id: &String,
     username: &String,
     seconds: &f64,
 ) -> Entries {

@@ -1,6 +1,6 @@
 CREATE TABLE entries (
   id SERIAL PRIMARY KEY,
-  level_id INTEGER NOT NULL,
+  level_id VARCHAR NOT NULL,
   username VARCHAR NOT NULL,
   seconds FLOAT NOT NULL
 )

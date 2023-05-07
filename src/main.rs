@@ -61,7 +61,7 @@ async fn get_level_entries(Path(path_level_id): Path<i32>) -> Json<Vec<Entries>>
 
 #[derive(Serialize, Deserialize)]
 struct TempEntry {
-    level_id: i32,
+    level_id: String,
     username: String,
     seconds: f64,
 }
