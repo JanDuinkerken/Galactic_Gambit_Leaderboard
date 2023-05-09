@@ -47,7 +47,7 @@ async fn all_entries() -> Json<Vec<Entries>> {
     Json(results)
 }
 
-async fn get_level_entries(Path(path_level_id): Path<i32>) -> Json<Vec<Entries>> {
+async fn get_level_entries(Path(path_level_id): Path<String>) -> Json<Vec<Entries>> {
     let connection = &mut establish_connection();
     let results = entries
         .filter(level_id.eq(path_level_id))
@@ -71,7 +71,7 @@ async fn post_entry(Json(payload): Json<serde_json::Value>) -> Json<Entries> {
 
     let deserialized_payload: TempEntry = serde_json::from_value(payload).unwrap();
 
-    let l_id: i32 = deserialized_payload.level_id;
+    let l_id: String = deserialized_payload.level_id;
     let u_name: String = deserialized_payload.username;
     let scnds: f64 = deserialized_payload.seconds;
 
