@@ -27,7 +27,7 @@ async fn main() {
 
     // Get port from env
     let port = std::env::var("PORT").unwrap_or_else(|_| "3000".to_string());
-    let addr = format!("localhost:{port}");
+    let addr = format!("0.0.0.0:{port}");
     axum::Server::bind(&addr.parse().unwrap())
         .serve(app.into_make_service())
         .await
