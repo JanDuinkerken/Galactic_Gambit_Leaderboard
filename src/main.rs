@@ -21,6 +21,7 @@ async fn main() {
     let app = Router::new()
         .route("/", get(index))
         .route("/entries", get(all_entries))
+        .route("/last_entries", get(last_entries))
         .route("/entries/:path_level_id", get(get_level_entries))
         .route("/entries", post(post_entry))
         .route("/foo/bar", get(foo_bar));
@@ -46,6 +47,20 @@ async fn all_entries() -> Json<Vec<Entries>> {
         .limit(10)
         .load::<Entries>(connection)
         .expect("Error loading posts");
+
+    Json(results)
+}
+
+async fn last_entries() -> Json<Vec<Entries>> {
+    // return the most recent entries
+
+    let connection = &mut establish_connection();
+    let mut results = entries
+        .load::<Entries>(connection)
+        .expect("Error loading posts");
+
+    results.reverse();
+    results.truncate(10);
 
     Json(results)
 }
